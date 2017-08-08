@@ -27,6 +27,7 @@ public class Main {
              else    {
 
                         return x* solve(x*x,(n-1)/2);}
+                        //push
     }
 
 }
