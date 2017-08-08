@@ -4,28 +4,27 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int Number = scanner.nextInt();
-        int power = scanner.nextInt();
-        int result = calculate(Number,power);
+        int Number1 = scanner.nextInt();
+        int Number2 = scanner.nextInt();
+        int result = Gcd(Number1,Number2);
         System.out.print(result);
-    }
-
-
-
-    private static int calculate(int x, int n) {
-        System.out.print(x+" "+ n+"in \n");
-        if(n==0){
-            System.out.print(x+" "+ n+" 1 \n");
-            return 1;}
-
-        else if(n%2 == 0)   {
-            System.out.print(x+" "+ n+"even \n");//n is even
-            return  calculate(x*x,n/2);}
-        else    {
-            System.out.print(x+" "+ n+"odd \n");//n is odd
-            return x* calculate(x*x,(n-1)/2);}
-    }
 
     }
 
+    private static int Gcd(int number1, int number2) {
+        int min = Math.min(number1,number2);
+        int gcd = 0 ;
+        for (int i = min; i>0 ; i--){
+            if(number1%i==0 && number2%i==0){
+                gcd = i;
+                return gcd;
 
+
+            }
+        }
+        return gcd;
+
+    }
+
+
+}
