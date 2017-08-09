@@ -1,42 +1,47 @@
 import java.util.Scanner;
 
 public class Main {
-//    Gas Stations
-//    Xenny's is competing in a race and his car has
-//    X
-//    X litres of fuel. There are
-//    N
-//    N milestones in the competition. It takes no fuel at all to travel between gas stations, but at the
-//            i
-//    t
-//            h
-//    ith gas station,
-//    P
-//            i
-//    Pi amount of petrol is drained.
-
+    // next prime
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-        int[] i = new int[100];
-        for (int j = 0 ; j<a ;j++){
-            int c = scanner.nextInt();
-            i[j] = c;
+        int n = scanner.nextInt();
+
+
+        int c = n;
+        int countleft = 0, countright = 0;
+        if (n == 0 || n == 1) {
+            System.out.println(2 - n);
         }
-        int j=0 ,count=0;
-        while(b>0){
-            b = b-i[j++];
-            count++;
-
+        else if (IsPrime(n)) {
+            System.out.println(0);
         }
-        System.out.print(count);
 
-
+        else {
+            while (true) {
+                if (IsPrime(--c))
+                    break;
+                else countleft++;
+            }
+            while (true) {
+                if (IsPrime(++n))
+                    break;
+                else countright++;
+            }
+            int result = (countleft) < (countright) ? countleft: countright;
+            System.out.print(result+1);
+        }
     }
 
-
-
+    private static boolean IsPrime(int n) {
+        boolean flag = true;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
 }
 
 
